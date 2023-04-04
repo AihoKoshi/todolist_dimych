@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {v1} from 'uuid';
-import s from './App.module.css';
 import {TasksType, Todolist} from './Todolist';
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
@@ -27,13 +26,12 @@ function App() {
         setTasks(filteredTasks)
     }
 
-    const changeTaskStatus = (taskId: string, isDone: boolean) => {
+    function changeTaskStatus(taskId: string, isDone: boolean) {
         let task = tasks.find(el => el.id === taskId);
         if (task) {
             task.isDone = isDone
         }
-        let checkedTasks = [...tasks];
-        setTasks(checkedTasks);
+        setTasks([...tasks]);
     }
 
     let [filter, setFilter] = useState<FilterValuesType>('all')
